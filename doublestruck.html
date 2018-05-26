@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>SuperOP535 | Doublestruck</title>
+    </head>
+    <body>
+        <script>
+            String.prototype.replaceArray = function(find, replace) {
+                var replaceString = this;
+                var regex; 
+                for (var i = 0; i < find.length; i++) {
+                    regex = new RegExp(find[i], "g");
+                    replaceString = replaceString.replace(regex, replace[i]);
+                }
+                return replaceString;
+            };
+            
+            const eng = [..."ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"];
+            const dbs = [..."&#120120;&#120121;&#8450;&#120123;&#120124;&#120125;&#120126;&#8461;&#120128;&#120129;&#120130;&#120131;&#120132;&#8469;&#120134;&#8473;&#8474;&#8477;&#120138;&#120139;&#120140;&#120141;&#120142;&#120143;&#120144;&#8484;&#120146;&#120147;&#120148;&#120149;&#120150;&#120151;&#120152;&#120153;&#120154;&#120155;&#120156;&#120157;&#120158;&#120159;&#120160;&#120161;&#120162;&#120163;&#120164;&#120165;&#120166;&#120167;&#120168;&#120169;&#120170;&#120171;&#120792;&#120793;&#120794;&#120795;&#120796;&#120797;&#120798;&#120799;&#120800;&#120801;]);
+
+	
+            function makeDoublestruck(txt){
+                return txt.replaceArray(eng, dbs);
+            }
+            
+            function message(msg){
+                document.getElementById('msg').innerHTML = msg;
+                document.getElementById('msg').style.display = 'inline';
+                setTimeout(function(){document.getElementById('msg').style.display = 'none'}, 1000);
+            }
+        </script>
+        <textarea type="text" placeholder="Input" onkeyup="document.getElementById('output').value = makeDoublestruck(this.value)" rows="5" cols="20"></textarea>
+        <textarea type="text" placeholder="Output" id="output" onfocus="this.select();document.execCommand('copy');message('Copied!');" rows="5" cols="20" readonly></textarea><br>
+        <b id="msg" style="display:none"></b>
+    </body>
+</html>
