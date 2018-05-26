@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>SuperOP535 | HTML Entities</title>
+        <script src="https://rawgit.com/mathiasbynens/he/master/he.js"></script>
+    </head>
+    <body>
+        <script>
+            var action = 'encode';
+            var type = 'hex';
+            function run(txt){
+                return (action == 'encode' ? he.encode(txt, {'encodeEverything': true, decimal: (type == 'decimal' ? true : false)}) : he.decode(txt));
+            }
+            function modeChanged(){
+                var e = document.getElementById("mode");
+                action = e.options[e.selectedIndex].value;
+            }
+            function modeChanged2(){
+                var e = document.getElementById("mode2");
+                type = e.options[e.selectedIndex].value;
+            }
+            function message(msg){
+                document.getElementById('msg').innerHTML = msg;
+                document.getElementById('msg').style.display = 'inline';
+                setTimeout(function(){document.getElementById('msg').style.display = 'none'}, 1000);
+            }
+        </script>
+        <select onchange="modeChanged()" id="mode">
+            <option value="encode">Encode</option>
+            <option value="decode">Decode</option>
+        </select>
+        <select onchange="modeChanged2()" id="mode2">
+            <option value="hex">Hex</option>
+            <option value="decimal">Decimal</option>
+        </select><br>
+        <textarea type="text" placeholder="Input" onkeyup="document.getElementById('output').value = run(this.value)" rows="5" cols="20"></textarea>
+        <textarea type="text" placeholder="Output" id="output" onfocus="this.select();document.execCommand('copy');message('Copied!');" rows="5" cols="20" readonly></textarea><br>
+        <b id="msg" style="display:none"></b>
+    </body>
+</html>
