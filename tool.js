@@ -70,8 +70,17 @@ function convert(txt) {
 const $ = {}; document.querySelectorAll('[id]').forEach(e => $[e.id] = e);
 function message(msg) {
   $.msg.innerHTML = msg;
-  $.msg..style.display = '';
+  $.msg.style.display = '';
   setTimeout(function () {
     document.getElementById('msg').style.display = 'none'
   }, 1000);
 }
+
+$.input.oninput = () => $.output.value = convert($.input.value);
+$.output.onfocus = () => {
+  if(!$.output.value) return;
+  $.output.select();
+  document.execCommand('copy');
+  $.output.blur();
+  message('Copied!');
+};
