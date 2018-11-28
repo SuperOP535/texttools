@@ -2,7 +2,8 @@ let kind = location.hash.slice(1);
 const a = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S',
          'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l',
          'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '0', '1', '2', '3', '4',
-         '5', '6', '7', '8', '9'], b;
+         '5', '6', '7', '8', '9']; // eng chars
+let b; // current char-map
 const arrays = {
   doublestruck: ['\ud835\udd38', '\ud835\udd39', '\u2102', '\ud835\udd3b', '\ud835\udd3c', '\ud835\udd3d', 
                  '\ud835\udd3e', '\u210d', '\ud835\udd40', '\ud835\udd41', '\ud835\udd42', '\ud835\udd43', 
