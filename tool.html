@@ -25,8 +25,8 @@
   <div id="cursive" class="opt">
     
   </div>
-  <textarea type="text" placeholder="Input" onkeyup="document.getElementById('output').value = convert(this.value)" rows="5" cols="20"></textarea>
-  <textarea type="text" placeholder="Output" id="output" onfocus="this.select();document.execCommand('copy');this.blur();message('Copied!');" rows="5" cols="20" readonly></textarea><br>
+  <textarea id="input" type="text" placeholder="Input" rows="5" cols="20"></textarea>
+  <textarea id="output" type="text" placeholder="Output" id="output" rows="5" cols="20" readonly></textarea><br>
   <b id="msg" style="display: none;"></b>
   <script src="tool.js"></script>
 </body>
