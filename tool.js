@@ -1,3 +1,4 @@
+const $ = {}; document.querySelectorAll('[id]').forEach(e => $[e.id] = e);
 let kind = location.hash.slice(1);
 const engMap = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S',
          'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l',
@@ -87,7 +88,6 @@ function convert(txt) {
   return replaceArray(txt, engMap, currentMap);
 }
 
-const $ = {}; document.querySelectorAll('[id]').forEach(e => $[e.id] = e);
 function message(msg) {
   $.msg.innerHTML = msg;
   $.msg.style.display = '';
