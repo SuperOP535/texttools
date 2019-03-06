@@ -1,4 +1,5 @@
-const $ = {}; document.querySelectorAll('[id]').forEach(e => $[e.id] = e);
+const $ = document.querySelector.bind(document), $$ = document.querySelectorAll.bind(document);
+
 let kind = location.hash.slice(1);
 const engMap = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S',
          'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l',
@@ -65,14 +66,16 @@ function kindUpdate() {
   }
   update();
 } kindUpdate();
+window.addEventListener('hashchange', kindUpdate);
 
 function update() {
-  $.output.value = convert($.input.value)
+  $('#output').value = convert($('#input').value)
 }
 
 const optChange = {
   circled(elm) {
     currentMap = allMaps['circled' + elm.value];
+    update();
   },
   htmlentities1(elm) {
 
@@ -82,25 +85,23 @@ const optChange = {
   }
 };
 
-window.addEventListener('hashchange', kindUpdate);
-
 function convert(txt) {
   return replaceArray(txt, engMap, currentMap);
 }
 
 function message(msg) {
-  $.msg.innerHTML = msg;
-  $.msg.style.display = '';
+  $('#msg').innerHTML = msg;
+  $('#msg').style.display = '';
   setTimeout(() => {
-    $.msg.style.display = 'none'
+    $('#msg').style.display = 'none'
   }, 1000);
 }
 
-$.input.addEventListener('input', update);
-$.output.addEventListener('focus', () => {
-  if(!$.output.value) return;
-  $.output.select();
+$('#input').addEventListener('input', update);
+$('#output').addEventListener('focus', () => {
+  if(!$('#output').value) return;
+  $('#output').select();
   document.execCommand('copy');
-  $.output.blur();
+  $('#output').blur();
   message('Copied!');
 });
