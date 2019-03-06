@@ -65,13 +65,13 @@ function kindUpdate() {
 } kindUpdate();
 
 const optChange = {
-  circled: e => {
-    b = arrays['circled' + e.options[e.selectedIndex].value];
+  circled(elm) {
+    currentMap = allMaps['circled' + elm.value];
   },
-  htmlentities1: e => {
+  htmlentities1(elm) {
 
   },
-  htmlentities2: e => {
+  htmlentities2(elm) {
 
   }
 };
