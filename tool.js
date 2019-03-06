@@ -62,7 +62,12 @@ function kindUpdate() {
       alert('Not found');
       break;
   }
+  update();
 } kindUpdate();
+
+function update() {
+  $.output.value = convert($.input.value)
+}
 
 const optChange = {
   circled(elm) {
@@ -91,7 +96,7 @@ function message(msg) {
   }, 1000);
 }
 
-$.input.addEventListener('input', () => $.output.value = convert($.input.value));
+$.input.addEventListener('input', update);
 $.output.addEventListener('focus', () => {
   if(!$.output.value) return;
   $.output.select();
