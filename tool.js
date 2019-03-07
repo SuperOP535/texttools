@@ -34,7 +34,16 @@ const allMaps = {
               '\uff42','\uff43','\uff44','\uff45','\uff46','\uff47','\uff48','\uff49','\uff4a',
               '\uff4b','\uff4c','\uff4d','\uff4e','\uff4f','\uff50','\uff51','\uff52','\uff53',
               '\uff54','\uff55','\uff56','\uff57','\uff58','\uff59','\uff5a','\uff10','\uff11',
-              '\uff12','\uff13','\uff14','\uff15','\uff16','\uff17','\uff18','\uff19']
+              '\uff12','\uff13','\uff14','\uff15','\uff16','\uff17','\uff18','\uff19'],
+  bold: '\ud835\udc00 \ud835\udc01 \ud835\udc02 \ud835\udc03 \ud835\udc04 \ud835\udc05 \ud835\udc06 ' +
+        '\ud835\udc07 \ud835\udc08 \ud835\udc09 \ud835\udc0a \ud835\udc0b \ud835\udc0c \ud835\udc0d ' +
+        '\ud835\udc0e \ud835\udc0f \ud835\udc10 \ud835\udc11 \ud835\udc12 \ud835\udc13 \ud835\udc14 ' +
+        '\ud835\udc15 \ud835\udc16 \ud835\udc17 \ud835\udc18 \ud835\udc19 \ud835\udc1a \ud835\udc1b ' +
+        '\ud835\udc1c \ud835\udc1d \ud835\udc1e \ud835\udc1f \ud835\udc20 \ud835\udc21 \ud835\udc22 ' +
+        '\ud835\udc23 \ud835\udc24 \ud835\udc25 \ud835\udc26 \ud835\udc27 \ud835\udc28 \ud835\udc29 ' +
+        '\ud835\udc2a \ud835\udc2b \ud835\udc2c \ud835\udc2d \ud835\udc2e \ud835\udc2f \ud835\udc30 ' +
+        '\ud835\udc31 \ud835\udc32 \ud835\udc33 \ud835\udfce \ud835\udfcf \ud835\udfd0 \ud835\udfd1 ' +
+        '\ud835\udfd2 \ud835\udfd3 \ud835\udfd4 \ud835\udfd5 \ud835\udfd6 \ud835\udfd7'.split(' ')
 };
 
 const allOpts = [...document.getElementsByClassName('opt')];
@@ -46,12 +55,6 @@ function kindUpdate() {
   hideAllOpts();
   kind = location.hash.slice(1);
   switch (kind) {
-    case 'doublestruck':
-      currentMap = allMaps.doublestruck;
-      break;
-    case 'fullwidth':
-      currentMap = allMaps.fullwidth;
-      break;
     case 'htmlentites':
     case 'cursive':
       alert('Not supported yet');
@@ -61,7 +64,8 @@ function kindUpdate() {
       allOpts[0].style.display = 'block';
       break;
     default:
-      alert('Not found');
+      if(allMaps.hasOwnProperty(kind)) currentMap = allMaps[kind];
+      else alert('Not found');
       break;
   }
   update();
